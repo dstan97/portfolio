@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<h1 class="col-9 col-md-8 mx-md-auto text-center">JavaScript</h1>
+<div class="row mt-2">
+    <div class="card col-12 col-md-8 offset-md-2">
+        <h2 class="card-title">Data Validation</h2>
+        <p class="card-text mb-2"></p>
+        <form class="row">
+
+            <p class="col-12 col-md-2 text-center">Enter your first name: </p>
+            <input class="col-12 col-md-2" type="text" id="fname" name="firstname" maxlength="20" size="20">
+            <p class="col-12 col-md-2 text-center">Enter your surname: </p>
+            <input class="col-12 col-md-2" type="text" id="sname" name="surname" maxlength="20" size="20">
+            <div class="col-12 my-2">
+                <input class="btn btn-purp" type="submit" value="Submit" onClick="validate()">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card col-9 col-md-8 mx-md-auto mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        In the section above I have created two input forms. The input forms use data validation to check, first whether or not the box is empty,
+                        then if the names that have been entered are between 2 and 20 characters.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="Javascript">
+    function validate()
+    {
+        // check that the input box is not empty
+        if (document.getElementById('fname').value.length > 1)
+        {
+            // check that the user's name is longer than 2 characters
+            if (document.getElementById('fname').value.length < 2)
+            {
+                alert("Only first names that are between 2-20 characters are allowed.");
+            }
+
+            else
+            {
+                alert("Your name has been accepted.");
+            }
+        }
+
+        else{
+            alert("Please do not leave the box blank.");
+        }
+
+        if (document.getElementById('sname').value.length > 1)
+        {
+            if (document.getElementById('sname').value.length < 2)
+            {
+                alert("Only surnames that are between 2-20 characters are allowed.");
+            }
+
+            else
+            {
+                // if the conditions are met the user's name will be accepted.
+                alert("Your name has been accepted.");
+            }
+        }
+
+        else{
+            alert("Please do not leave the box blank.");
+        }
+    }
+</script>
+</body>
+</html>
