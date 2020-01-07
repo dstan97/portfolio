@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dean Standerwick Portfolio</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="row">
+<h1 class="page-head col-12 col-md-8 mx-md-auto text-center">Vue.JS</h1>
+</div>
+<div id="vue-app">
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="mb-2">Data Bindings:</h2>
+                        <a v-bind:href="website">Linkedin profile</a>
+                        <p v-html="websiteTag"></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="mb-2">Data & Methods:</h2>
+                        <p>Name: {{ name }}</p>
+                        <p>Job: {{ job }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            In the section above I have created two data bindings. The first 'Linkedin' link is using a data attribute called 'website' that is stored in the JavaScript code for this page.
+                            The 'website' data attribute is a variable with its data being the 'Linkedin' URL.
+                        </p>
+                        <p>
+                            The second 'Linkedin' link is similar to the first, except that the 'a href' tag is also stored in the data attribute.
+                        </p>
+                        <p>
+                            The name & job attributes are just simple variables containing text strings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-2">Events:</h2>
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <button class="site-button btn btn-primary" @click="add(1)">Add a year</button>
+                        <button class="site-button btn btn-primary" @click="subtract(1)">Subtract a year</button>
+                        <button class="site-button btn btn-primary" @dblclick="add(10)">Add 10 years</button>
+                        <button class="site-button btn btn-primary" @dblclick="subtract(10)">Subtract 10 years</button>
+                        <p class="my-5">My age is {{age}}</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The age attribute is a simple variable with a value of 22. The add/subtract buttons use an increment function and a decrement function that are both bound to click events.
+                            You can use these buttons to add or subtract a year from the age.
+                        </p>
+                        <p>
+                            The add 10 & subtract 10 buttons work in the same way except they increment and decrement by 10 and are both bound to double click events.
+                        </p>
+                        <p>
+                            The canvas box on the right tracks the users mouse position when they hover over it, by showing the co-ordinates.
+                            This is done by using X & Y variables that are then offset when the user hovers the mouse over the canvas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-2">Modifiers:</h2>
+                <a @click.prevent="click" href="https://www.linkedin.com/in/deanstanderwick/">Click here to view view my Linkedin profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The link in the modifier section above has a 'prevent' function attached to its click event which stops the left click from sending the user to the URL.
+                            Instead the user is given an alert suggesting that they open the link in another tab, as the 'prevent' function is only applied the left click.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-2">Keyboard Events:</h2>
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <label>Name:</label>
+                        <input type="text" v-model="namespan"/>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <label>Age:</label>
+                        <input type="text" v-model="agespan"/>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <span>My name is {{namespan}}</span>
+                        <span> & I am {{agespan}} years old.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The input boxes above can be used to live edit the sentence on the right. This is done by updating the 'namespan' & 'agespan' data attributes after each keypress.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-2">Computed Properties:</h2>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        <button class="site-button btn btn-primary" @click="a++">Add to A</button>
+                        <button class="site-button btn btn-primary" @click="b++">Add to B</button>
+                    </div>
+                    <div class="col-6 col-md-1">
+                        <p>A - {{a}}</p>
+                    </div>
+                    <div class="col-6 col-md-1">
+                        <p>B - {{b}}</p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <p>Age + A == {{addToA}}</p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <p>Age + B == {{addToB}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The A & B data attributes can be incremented by clicking the add buttons and that value is then added to the age data attribute.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-2">Dynamic CSS:</h2>
+                <button class="site-button btn btn-primary" @click="nearby = !nearby">Toggle nearby</button>
+                <button class="site-button btn btn-primary" @click="available = !available">Toggle available</button>
+                <div v-bind:class="compClasses">
+                    <span class="testspan">Test</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The 'nearby' button can be used to change the 'test' background colour to red and add content by toggling the word 'nearby'.
+                        </p>
+                        <p>
+                            The 'available' button can be used to change the 'test' background colour to green.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-2">Looping through lists:</h2>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <ul>
+                            <li v-for="(character, index) in characters">{{index}} . {{character}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <template v-for="(non_human, index) in non_humans">
+                            <h4>{{index}} . {{non_human.name}}</h4>
+                            <p>{{non_human.race}}</p>
+                        </template>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <template v-for="non_human in non_humans">
+                            <div v-for="(val,key) in non_human">
+                                <p>
+                                    {{key}} - {{val}}
+                                </p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The lists above contain information about characters from the game series 'Tekken'.
+                        </p>
+                        <p>
+                            The data is displayed through a for loop adding each list item to a unordered list in the first section and a template in the second section.
+                        </p>
+                        <p>
+                            The data is displayed in a 'key' - 'value' format in the 3rd section.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-12 col-md-8 mx-md-auto mt-2">
+            <div class="card-body">
+                <h2 class="mb-3">Destroy The Car!</h2>
+                <div class="row">
+                    <div class=" col-md-4 offset-md-4">
+                        <!-- car image -->
+                        <div id="car" v-bind:class="{destroyed:ended}"></div>
+                        <!-- car health -->
+                        <div class="my-2" id="car-health">
+                            <div v-bind:style="{width:health + '%'}"></div>
+                        </div>
+                        <!-- game controls -->
+                        <div class="row" id="controls">
+                            <div class="col-4 col-md-6">
+                                <button class="site-button btn btn-primary" @click="punch" v-show="!ended">Punch</button>
+                            </div>
+                            <div class="col-4 col-md-6">
+                                <button class="site-button btn btn-primary" @click="restart">Restart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card desc-card col-12 col-md-8 mx-md-auto mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            The final section includes a simple game where you click the 'punch' button to lower the car's health until it is destroyed.
+                        </p>
+                        <p>
+                            The user can also restart the game which will reset the car's health bar and reset the image of the car.
+                        </p>
+                        <p>
+                            The 'punch button works by removing 10 from the car's health each time the button is clicked until the healthbar reaches 0.
+                            The 'punch button then disappears and teh car image is replaced with a destroyed car.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
