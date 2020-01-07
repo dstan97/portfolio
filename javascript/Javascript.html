@@ -39,16 +39,89 @@
     </div>
 </div>
 
+
+<div class="row mt-2">
+    <div class="card col-12 col-md-8 offset-md-2">
+        <h2 class="card-title">Drum Machine</h2>
+        <p class="card-text mb-2"></p>
+        <div class="drum-machine">
+            <h3>Press the buttons to play the sounds:</h3>
+            <div class="visual my-4">
+                <div class="row pads">
+                    <div class="kick_pad btn btn-info col py-3 mr-1">
+                        Kick
+                        <audio class="sound" src="sounds/kick.wav"></audio>
+                    </div>
+                    <div class="snare_pad btn btn-success col py-3">
+                        Snare
+                        <audio class="sound" src="sounds/snare.wav"></audio>
+                    </div>
+                    <div class="hat_pad btn btn-danger col py-3 mx-1">
+                        Hi-Hat
+                        <audio class="sound" src="sounds/hat.wav"></audio>
+                    </div>
+                    <div class="closed_pad btn btn-primary col py-3 mr-1">
+                        Hi-Hat 2
+                        <audio class="sound" src="sounds/closed.wav"></audio>
+                    </div>
+                    <div class="clap_pad btn btn-warning col py-3">
+                        Clap
+                        <audio class="sound" src="sounds/clap.wav"></audio>
+                    </div>
+                    <div class="crowd_pad btn btn-secondary col py-3 ml-1">
+                        Crowd
+                        <audio class="sound" src="sounds/crowd.wav"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card col-9 col-md-8 mx-md-auto mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        The drum machine above was created by attaching audio files inside of divs.
+                        The audio files are played played through the use of a for loop that matches the correct
+                        sound with the button pressed.
+                    </p>
+                    <p>
+                        The 'currentTime' of the sound files is reset each time the button is pressed to allow for
+                        sounds to overlap.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script language="Javascript">
+    window.addEventListener('load', () => {
+        const sounds = document.querySelectorAll('.sound');
+        const pads = document.querySelectorAll('.pads div');
+
+        console.log(sounds);
+
+        //sound
+        pads.forEach((pad, index) =>{
+            pad.addEventListener('click', function(){
+                sounds[index].currentTime = 0;
+                sounds[index].play();
+            });
+        });
+    });
+
     function validate()
     {
         // check that the input box is not empty
-        if (document.getElementById('fname').value.length > 1)
+        if (document.getElementById('fname').value.length > 0)
         {
             // check that the user's name is longer than 2 characters
-            if (document.getElementById('fname').value.length < 2)
+            if (document.getElementById('fname').value.length < 4)
             {
-                alert("Only first names that are between 2-20 characters are allowed.");
+                alert("Only first names that are between 4-20 characters are allowed.");
             }
 
             else
@@ -58,14 +131,14 @@
         }
 
         else{
-            alert("Please do not leave the box blank.");
+            alert("Please do not leave the first name box blank.");
         }
 
-        if (document.getElementById('sname').value.length > 1)
+        if (document.getElementById('sname').value.length > 0)
         {
-            if (document.getElementById('sname').value.length < 2)
+            if (document.getElementById('sname').value.length < 4)
             {
-                alert("Only surnames that are between 2-20 characters are allowed.");
+                alert("Only surnames that are between 4-20 characters are allowed.");
             }
 
             else
@@ -76,7 +149,7 @@
         }
 
         else{
-            alert("Please do not leave the box blank.");
+            alert("Please do not leave the surname box blank.");
         }
     }
 </script>
